@@ -1,0 +1,46 @@
+#!/bin/bash
+
+if [ -z $1 ]
+then
+	if pgrep -f "cassandra" > /dev/null 2>&1
+	then
+		echo "Cassandra is here. She's waving."
+	else
+		echo "Cassie is nowhere to be seen..."
+	fi
+	if pgrep -f "patchy" > /dev/null 2>&1
+	then
+		echo "Patchouli is here, ignoring you."
+	else
+		echo "Patchouli is out, which is very strange."
+	fi
+	if pgrep -f "megumin" > /dev/null 2>&1
+	then
+		echo "Megumin is here."
+	else
+		echo "Megumin isn't here."
+	fi
+	echo "Mikachu is connected via IRC."
+else
+	if [ $1 = "cassie" ]
+	then
+		name="cassandra"
+		out="hi :D"
+	elif [ $1 = "patchy" ]
+	then
+		name="patchy"
+		out="lipgloss."
+	elif [ $1 = "megumin" ]
+	then
+		name="megumin"
+		out="I dont know anything about this character"
+	fi
+	
+	if pgrep -f $name > /dev/null 2>&1
+	then
+	  echo "$1: $out"
+	else
+	  echo "$1 isn't here right now."
+	fi
+fi
+exit 0
