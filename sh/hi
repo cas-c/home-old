@@ -4,21 +4,27 @@ if [ -z $1 ]
 then
 	if pgrep -f "cassandra" > /dev/null 2>&1
 	then
-		echo "Cassandra is here. She's waving."
+		echo "UP: Cassandra, nyan admin bot"
 	else
-		echo "Cassie is nowhere to be seen..."
+		echo "DOWN: Cassandra, nyan admin bot"
 	fi
 	if pgrep -f "patchy" > /dev/null 2>&1
 	then
-		echo "Patchouli is here, ignoring you."
+		echo "UP: Patchouli, old python image search"
 	else
-		echo "Patchouli is out, which is very strange."
+		echo "DOWN: Patchouli, old python image search"
 	fi
 	if pgrep -f "megumin" > /dev/null 2>&1
 	then
-		echo "Megumin is here."
+		echo "UP: Megumin, selfbot services"
 	else
-		echo "Megumin isn't here."
+		echo "DOWN: Megumin, selfbot services"
+	fi
+	if pgrep -f "qasi" > /dev/null 2>&1
+	then
+		echo "UP: QASI, cassandra rewrite"
+	else
+		echo "DOWN: QASI, cassandra rewrite"
 	fi
 	echo "Mikachu is connected via IRC."
 else
@@ -34,6 +40,10 @@ else
 	then
 		name="megumin"
 		out="I dont know anything about this character"
+	elif [ $1 = "qasi" ]
+	then
+		name="qasi"
+		out="hey :)"
 	fi
 	
 	if pgrep -f $name > /dev/null 2>&1
