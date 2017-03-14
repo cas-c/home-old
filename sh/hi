@@ -26,6 +26,12 @@ then
 	else
 		echo "DOWN: QASI, cassandra rewrite"
 	fi
+	if pgrep -f "tuesday" > /dev/null 2>&1
+	then
+		echo "UP: Tuesday, new image search"
+	else
+		echo "DOWN: Tuesday, new image search"
+	fi
 	echo "Mikachu is connected via IRC."
 else
 	if [ $1 = "cassie" ]
@@ -36,6 +42,10 @@ else
 	then
 		name="patchy"
 		out="lipgloss."
+	elif [ $1 = "tuesday" ]
+	then
+		name="tuesday"
+		out=":3 hi"
 	elif [ $1 = "megumin" ]
 	then
 		name="megumin"
